@@ -1,0 +1,4 @@
+{
+    "mongoDBConnectURI" : "mongodb+srv://archan:1234@cluster0-imrbu.mongodb.net/project_db?retryWrites=true&w=majority"
+}
+  

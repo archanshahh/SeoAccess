@@ -1,0 +1,23 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@ta11y/core": "^1.3.2",
+    "config": "^3.3.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "mongoose": "^5.9.2",
+    "psi": "^4.0.1",
+    "seo-checker-js": "^0.2.1",
+    "split": "^1.0.1",
+    "split-string": "^6.1.0",
+    "string-split-by": "^1.0.0"
+  }
+}

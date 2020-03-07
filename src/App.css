@@ -1,0 +1,66 @@
+width {
+  width: 18rem;
+}
+body
+{
+  background-color: #000;
+  color: #fff;
+}
+h1{
+  color:white;
+}
+.border-3 {
+  border-width:8px !important;
+}
+.navbar-custom {
+  background-color: #191633;
+}
+
+.DD {
+  background-image: url(./DD.jpg);
+}
+
+.textcolor {
+  color: aliceblue;
+}
+
+span#et-info-phone:before { 
+  font-family: FontAwesome !important;
+  content: '10b' !important;
+}
+
+.circle {
+  position: relative;
+  text-align: center;
+}
+.circle strong {
+  position: absolute;
+  top: 40%;
+  left: 0;
+  width: 100%;
+  text-align: center;
+}
+.list-group-item{
+  cursor: pointer;
+  background-color: #191633;
+  border-bottom: 2px solid white;
+}
+.panel-title{
+  cursor: pointer;
+  border: 1px solid white;
+  border-radius: 10px;  
+  padding: 5%;
+  margin-top: 2%;
+}
+.space{
+  padding: 5%;
+}
+.panel-group{
+  width: 50%;
+}
+.left{
+  float:left;
+}
+.right{
+  float: right;
+}
