@@ -43,14 +43,23 @@ class FirstPage extends React.Component{
         }
         console.log(this.state.url)
        let res1=await axios.post('http://localhost:5000/seo_reports/url',url)
-        .then(res=>console.log(res.data)); 
+        .then(
+            
+            await axios.post('http://localhost:5000/seo_reports/add')
+        .then(res=>console.log(res.data))
+            
+            
+        ); 
        let res2= await axios.post('http://localhost:5000/tally_reports/url',url)
-        .then(res=>console.log(res.data));
-        await axios.post('http://localhost:5000/tally_reports/add')
-        .then(res=>console.log(res.data));
-       await axios.post('http://localhost:5000/seo_reports/add')
-        .then(res=>console.log(res.data));
-       // window.location="/secondPage";
+        .then(
+
+           await axios.post('http://localhost:5000/tally_reports/add')
+            .then(res=>console.log(res.data))
+
+        );
+       
+     
+        window.location="/secondPage";
         
     }
 

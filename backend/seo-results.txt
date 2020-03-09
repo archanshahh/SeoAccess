@@ -1,0 +1,4 @@
+number of img without [alt] expect=0 actual=15
+number of a without [rel] expect=0 actual=43
+head does not have meta[name="descriptions"]
+html does not have h1
