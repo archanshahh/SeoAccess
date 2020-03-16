@@ -37,7 +37,7 @@ router.post('/getByUrl', async (req, res) => {
       const data = await Seo_report.find({
          url: req.body.url});
       if (!data) {
-        return res.status(404).send('task not found');
+        return res.status(404).send('SEO url  not found');
       }
       res.send(data);
     } catch (err) {

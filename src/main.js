@@ -42,6 +42,29 @@ class FirstPage extends React.Component{
 
         }
         console.log(this.state.url)
+
+//         let res1=await axios.post('http://localhost:5000/seo_reports/url',url)
+//           if(res1)
+//           {
+//               console.log("get report seo")
+//             await axios.post('http://localhost:5000/seo_reports/add').then(
+//                 res=>console.log(res.data)
+//             )
+//           }
+//          else{
+//    console.log("not added seo")
+//          }
+//          let res2=await axios.post('http://localhost:5000/tally_reports/url',url)
+//          if(res2)
+//          {
+//             console.log("get report tally")
+//             await axios.post('http://localhost:5000/tally_reports/add').then
+//             (
+//                 res=>console.log(res.data)
+//             )
+
+//          }
+      
        let res1=await axios.post('http://localhost:5000/seo_reports/url',url)
         .then(
             
@@ -59,7 +82,7 @@ class FirstPage extends React.Component{
         );
        
      
-        window.location="/secondPage";
+        
         
     }
 

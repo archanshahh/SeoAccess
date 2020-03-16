@@ -75,6 +75,19 @@ router.route('/').get((req, res) => {
         .then(tally_reports => res.json(tally_reports))
         .catch(err => res.status(400).json('Error: ' + err))
 });
+router.post('/getByUrl', async (req, res) => {
+    try {
+        console.log("inside")
+      const data = await Tally_report.find({
+         url: req.body.url});
+      if (!data) {
+        return res.status(404).send('tally url not  found');
+      }
+      res.send(data);
+    } catch (err) {
+      res.status(500).send('Server error');
+    }
+  });
 
 
 

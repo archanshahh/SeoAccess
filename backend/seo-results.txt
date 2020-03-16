@@ -1,4 +1,3 @@
-number of img without [alt] expect=0 actual=15
-number of a without [rel] expect=0 actual=43
+number of h1 greater than 1
+number of a without [rel] expect=0 actual=236
 head does not have meta[name="descriptions"]
-html does not have h1
