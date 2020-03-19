@@ -1,4 +1,3 @@
-//const url = 'https://www.reddit.com/r/node/comments/4lyl55/solution_for_exporting_asyncawait_functions/';
 const check_seo = require('./check-seo');
 const check_performance = require('./check-performance');
 const fs = require('fs');
@@ -41,7 +40,7 @@ function checkSEOCompliance(url) {
 
 
 
-
+//let total_rules;
 function createReportObject(url) {
     console.log("createReportObject");
     //creating report object with all the values
@@ -53,17 +52,22 @@ function createReportObject(url) {
         },
         seo_results: arrOfSEOResult,
         performance_results: perf_result,
-        score: 6 - arrOfSEOResult.length
+        score: Math.round(100-((arrOfSEOResult.length*100)/6))
     }
     return seo_report;
 }
 
 module.exports = {
     async doAudit(url){
-    let perf_result = await checkPerformance(url);
     let seo_result = await checkSEOCompliance(url);
+    let perf_result = await checkPerformance(url);
+    console.log('Writing finished!');
+
+
     if (seo_result) {
+        console.log(seo_result);
         let readSEO = new Promise((resolve, reject) => {
+            console.log("reading started");
             fs.readFile('./seo-results.txt', (err, data) => {
                 if (err) {
                     console.log(err);
@@ -71,7 +75,7 @@ module.exports = {
                 arrOfSEOResult = split(String(data), '\n');
                 arrOfSEOResult.splice(-1, 1);
                 removeFile();
-                //console.log(arrOfSEOResult);
+                console.log(arrOfSEOResult);
                 if (arrOfSEOResult != null) {
                     resolve(true);
                 } else {
@@ -79,6 +83,8 @@ module.exports = {
                 }
             })
         });
+
+         
         let a3 = await readSEO;
         if (perf_result && a3) {
             //console.log(perf_result);

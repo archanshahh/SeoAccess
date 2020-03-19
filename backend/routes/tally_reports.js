@@ -22,7 +22,7 @@ router.route('/url').post((req,res)=>{
 
 async function callAcc(url) {
     await check_accessibility.callAccessbility(url).then((tally_report) => {
-        router.route('/add').post((req, res) => {
+        // router.route('/add').post((req, res) => {
             //const errors = req.body.summary.errors;
             console.log(tally_report);
             const url = tally_report.url;
@@ -55,11 +55,11 @@ async function callAcc(url) {
             });
 
             nTally.save()
-                .then(() => {
-                    res.json('Tally report added');
-                })
-                .catch((err) => console.log(err));
-        });
+                // .then(() => {
+                //     res.json('Tally report added');
+                // })
+                // .catch((err) => console.log(err));
+        // });
     }).catch((e)=>{
         console.error(e);
     });

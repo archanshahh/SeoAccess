@@ -18,7 +18,7 @@ class App extends React.Component{
       <Route path="/" exact component={FirstPage}></Route>
       <Route path="/about" component={AboutPage}></Route>
       <Route path="/contact" component={ContactUs}></Route>
-      <Route path="/secondPage/:id" component={SecondPage}></Route>
+      <Route path="/secondPage"component={SecondPage}></Route>
 
         <Footer />
         </Router>

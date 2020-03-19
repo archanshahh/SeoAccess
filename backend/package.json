@@ -14,8 +14,11 @@
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "mongoose": "^5.9.2",
+    "nodemailer": "^6.4.5",
     "psi": "^4.0.1",
+    "query-string": "^6.11.1",
     "seo-checker-js": "^0.2.1",
+    "set": "^1.1.1",
     "split": "^1.0.1",
     "split-string": "^6.1.0",
     "string-split-by": "^1.0.0"

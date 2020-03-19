@@ -20,45 +20,47 @@ class SecondPage extends React.Component{
   }
 
   componentDidMount(){
-    axios.post('http://localhost:5000/seo_reports/getByUrl',this.props.match.params.id)
+   
+
+    axios.get('http://localhost:5000/seo_reports')
     .then(res=>{
         if(res.data.length >0){
             this.setState({
                 seo:res.data, 
             })
 
-            console.log("hello"+this.props.match.params.id);
+           
         }
-        // this.setState({
-        //   Performance_result:this.state.seo[0].performance_results
-        // })
-        // this.setState({
-        //   percentage1:this.state.seo[0].score
-        // })
-        // this.setState({
-        //   seo_result:this.state.seo[0].seo_results
-        // })
+        this.setState({
+          Performance_result:this.state.seo[0].performance_results
+        })
+        this.setState({
+          percentage1:this.state.seo[0].score
+        })
+        this.setState({
+          seo_result:this.state.seo[0].seo_results
+        })
     })
-    console.log("hello"+this.props.match.params.id);
+    // console.log("hello"+request);
 
-    axios.post('http://localhost:5000/tally_reports/getByUrl',this.props.match.params.id)
+    axios.get('http://localhost:5000/tally_reports')
     .then(res=>{
         if(res.data.length >0){
             this.setState({
                 aoda:res.data  
             })
         }
-        // this.setState({
-        //   aoda_summary:this.state.aoda[0].summary 
-        // })
-        // this.setState({
-        //   aoda_score:this.state.aoda[0].score
-        // }) 
-        // this.setState({
-        //  aoda_results: this.state.aoda[0].results
+        this.setState({
+          aoda_summary:this.state.aoda[0].summary 
+        })
+        this.setState({
+          aoda_score:this.state.aoda[0].score
+        }) 
+        this.setState({
+         aoda_results: this.state.aoda[0].results
 
-        // })
-     //   console.log(this.state.aoda[0].results[0]);
+        })
+       console.log(this.state.aoda[0].results[0]);
         
     })
   

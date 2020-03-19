@@ -5,6 +5,8 @@ const checkSEO = require('./../services/seo/index');
 let Seo_report = require('../models/seo_report.model');
 let seo_report;
 
+const queryString = require('query-string');
+
 
 
 
@@ -23,6 +25,7 @@ router.route('/url').post((req,res)=>{
     }
 
 })
+
 
 
 
@@ -46,12 +49,14 @@ router.post('/getByUrl', async (req, res) => {
   });
 router.route('/').get((req,res)=>{
     Seo_report.find({})
-        .then(seo_reports => res.json(seo_reports))
+        .then(seo_reports => res.json(seo_reports),
+     
+        )
         .catch(err=> res.status(400).json('Error: '+err))
 });
 async function callSEO(url){
     await checkSEO.doAudit(url).then((seo_report)=>{
-router.route('/add').post((req,res)=>{
+// router.route('/add').post((req,res)=>{
     console.log(seo_report);
     const url = seo_report.url;
    
@@ -84,11 +89,12 @@ router.route('/add').post((req,res)=>{
         score
     });
 
-    nSeo.save()
-        .then(()=> res.json('Seo report added'))
-        .catch((err)=> res.status(400).json('Error: '+err));
-});
+    nSeo.save();
+        // .then(()=> res.json('Seo report added'))
+        // .catch((err)=> res.status(400).json('Error: '+err));
+// });
     });
+
 }
 
 module.exports = router;
