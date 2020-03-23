@@ -125,7 +125,7 @@ class SecondPage extends React.Component{
                         <p data-toggle="collapse" href="#collapse1">Performance Result <i className="fas fa-angle-double-down right"></i></p>
                       </h4>
                     </div>
-                    <div id="collapse1" className="panel-collapse collapse">
+                    <div id="collapse1" className="panel-collapse uncollapse">
                       <ul className="list-group">
                    
                         
@@ -143,7 +143,7 @@ class SecondPage extends React.Component{
                         <p data-toggle="collapse" href="#collapse2">Result <i className="fas fa-angle-double-down right"></i></p>
                       </h4>
                     </div>
-                    <div id="collapse2" className="panel-collapse collapse">
+                    <div id="collapse2" className="panel-collapse uncollapse">
                       <ul className="list-group">
                         {items}
                         
@@ -192,7 +192,7 @@ class SecondPage extends React.Component{
                         <p data-toggle="collapse" href="#collapse3">Summary <i className="fas fa-angle-double-down right"></i></p>
                       </h4>
                     </div>
-                    <div id="collapse3" className="panel-collapse collapse">
+                    <div id="collapse3" className="panel-collapse uncollapse">
                       <ul className="list-group">
                        <li className="list-group-item">Errors:{this.state.aoda_summary.errors}</li>
                         <li className="list-group-item">Warnings:{this.state.aoda_summary.warnings}</li>
@@ -205,7 +205,7 @@ class SecondPage extends React.Component{
                         <p data-toggle="collapse" href="#collapse4">Aoda Results <i className="fas fa-angle-double-down right"></i></p>
                       </h4>
                     </div>
-                    <div id="collapse4" className="panel-collapse collapse">
+                    <div id="collapse4" className="panel-collapse uncollapse">
                       <ul className="list-group">
                         {result}
                         {/* <li className="list-group-item">Four</li>
