@@ -60,6 +60,7 @@ async function callSEO(url){
     console.log(seo_report);
     const url = seo_report.url;
    
+    
     const summary = {
         errors: seo_report.summary.errors,
         total_rules: seo_report.summary.total_rules

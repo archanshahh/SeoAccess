@@ -7,7 +7,7 @@ const path = require('path');
 (async () => {
   const browser = await puppeteer.launch();
   const page = await browser.newPage();
-  await page.goto("http://localhost:3000/", {
+  await page.goto("http://localhost:3000/secondPage", {
     waitUntil: "networkidle2"
   });
   await page.setViewport({ width: 1680, height: 1050 });
