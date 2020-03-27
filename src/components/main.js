@@ -5,7 +5,7 @@ import SecondPage from './SecondPage';
 import history from './history';
 import axios from 'axios';
 import ProgressBar from 'react-bootstrap/ProgressBar';
-import UrlContext from './context/urlContext';
+import UrlContext from '../context/urlContext';
 
 
 class FirstPage extends React.Component {
