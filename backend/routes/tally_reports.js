@@ -8,7 +8,7 @@ const check_accessibility = require('./../services/accessibilty/index');
 router.route('/url').post((req,res)=>{
     try{
  const url=req.body.url;
- console.log("backend"+url)
+//  console.log("backend"+url)
  res.send("got it from tally")
  callAcc(url);
     }
@@ -24,7 +24,7 @@ async function callAcc(url) {
     await check_accessibility.callAccessbility(url).then((tally_report) => {
         // router.route('/add').post((req, res) => {
             //const errors = req.body.summary.errors;
-            console.log(tally_report);
+          //  console.log(tally_report);
             const url = tally_report.url;
             const summary = {
                 errors: tally_report.summary.errors,
@@ -77,9 +77,10 @@ router.route('/').get((req, res) => {
 });
 router.post('/getByUrl', async (req, res) => {
     try {
-        console.log("inside")
+        // console.log("inside")
+        // console.log(req.body.location);
       const data = await Tally_report.find({
-         url: req.body.url});
+         url: req.body.location});
       if (!data) {
         return res.status(404).send('tally url not  found');
       }
