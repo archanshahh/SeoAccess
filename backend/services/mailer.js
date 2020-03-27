@@ -6,7 +6,7 @@ const path = require('path');
 module.exports = {
   async doEmail(toEmail,url){
     var emailadd = toEmail;
-    console.log(emailadd);
+    console.log("inside mailer.js inside inside");
     const browser = await puppeteer.launch();
     const page = await browser.newPage();
     await page.goto("http://localhost:3000/secondPage/"+toEmail+'/'+url, {

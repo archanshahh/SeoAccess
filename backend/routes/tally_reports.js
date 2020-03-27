@@ -8,7 +8,7 @@ const check_accessibility = require('./../services/accessibilty/index');
 router.route('/url').post((req,res)=>{
     try{
  const url=req.body.url;
- console.log("backend"+url)
+//  console.log("backend"+url)
  res.send("got it from tally")
  callAcc(url);
     }
@@ -77,8 +77,8 @@ router.route('/').get((req, res) => {
 });
 router.post('/getByUrl', async (req, res) => {
     try {
-        console.log("inside")
-        console.log(req.body.location);
+        // console.log("inside")
+        // console.log(req.body.location);
       const data = await Tally_report.find({
          url: req.body.location});
       if (!data) {

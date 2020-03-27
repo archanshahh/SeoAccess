@@ -26,15 +26,15 @@ router.route('/url').post((req, res) => {
 // }
 router.post('/getByUrl', async (req, res) => {
     try {
-        console.log("inside")
-        console.log(req.body.location);
+        // console.log("inside")
+        // console.log(req.body.location);
         const data = await Seo_report.find({
             url: req.body.location
         });
         if (!data) {
             return res.status(404).send('SEO url  not found');
         }
-        console.log(data+"from seo backend ")
+        // console.log(data+"from seo backend ")
         res.send(data);
     } catch (err) {
         res.status(500).send('Server error');
