@@ -4,7 +4,9 @@ import { BrowserRouter, Route, Link } from "react-router-dom";
 import SecondPage from './SecondPage';
 import history from './history';
 import axios from 'axios';
-import ProgressBar from 'react-bootstrap/ProgressBar'
+import ProgressBar from 'react-bootstrap/ProgressBar';
+import UrlContext from './context/urlContext';
+
 
 class FirstPage extends React.Component{
     constructor(props)
@@ -21,6 +23,7 @@ class FirstPage extends React.Component{
             count:0
         }
     }
+    
     onChangeName(e){
         this.setState({
             name:e.target.value
@@ -43,10 +46,14 @@ class FirstPage extends React.Component{
             url:this.state.url
 
         }
-        console.log(this.state.url)
+       
 
-        await axios.post('http://localhost:5000/seo_reports/url/',url);
-        await axios.post('http://localhost:5000/tally_reports/url/',url);
+      
+        console.log(this.state.url)
+        console.log(this.state.email)
+
+       await axios.post('http://localhost:5000/seo_reports/url/',url);
+       await axios.post('http://localhost:5000/tally_reports/url/',url);
         this.myInterval=setInterval(()=>{
             this.setState(prevState=>({
                 count:this.state.count+10
@@ -54,7 +61,10 @@ class FirstPage extends React.Component{
             if(this.state.count==100)
    {
        console.log("inside if"+this.state.count)
-        window.location = '/secondPage';
+  
+    
+        window.location = '/secondPage/'+this.state.email+'/'+this.state.url;
+       
    }
 
         },2000)
@@ -106,7 +116,8 @@ class FirstPage extends React.Component{
     }
 
     render() {
-        const {count}=this.state
+       // const {count}=this.state
+  
       return (
         <div>
           
@@ -172,6 +183,7 @@ class FirstPage extends React.Component{
                     {/* onClick={() => history.push('/secondPage')} */}
                  
                     {/* <button type="submit" className="btn btn-primary d-block mt-4 mx-auto" onClick={history.push('/secondPage')}>See report</button> */}
+                
                 </form>  
                 <label id="loading" hidden>Loading ...</label>
                 {/* <div className="progress center-block w-25 mt-4 mx-auto" style={{"textAlign" : "center"}}>
@@ -183,7 +195,7 @@ class FirstPage extends React.Component{
                 </div> */}
                  {/* <ProgressBar  animated now={count}  label={`${count}%`} /> */}
                  <div>
-  <ProgressBar animated striped variant="success" now={count} label={`${count}%`} key={1}   />
+  <ProgressBar animated striped variant="success" now={this.state.count} label={`${this.state.count}%`} key={1}   />
 </div>
             </div>
            

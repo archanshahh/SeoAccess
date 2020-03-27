@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import axios from 'axios';
 import { CircularProgressbar, buildStyles  } from 'react-circular-progressbar';
 import ChangingProgressProvider from "./ChangingProgressProvider";
@@ -15,20 +15,40 @@ class SecondPage extends React.Component{
       aoda_summary:[],
       aoda_score:"",
       aoda_results:[],
+      url:"",
+      email:""
       
     }
+    
   }
 
   componentDidMount(){
-   
+       console.log(this.props.match.params.id);
+       console.log(this.props.match.params.url);
+       console.log(this.props.match.params.email);
 
-    axios.get('http://localhost:5000/seo_reports')
+
+       var urlfetch = this.props.match.params.id + '//' + this.props.match.params.url + '/';
+       console.log(urlfetch);
+       const loc={
+            location:urlfetch
+          }
+       const email={
+            email:this.props.match.params.email,
+            location:urlfetch
+        }
+   
+       
+    axios.post('http://localhost:5000/seo_reports/getByUrl',loc)
     .then(res=>{
+      console.log(res.data+"hhih")
+
         if(res.data.length >0){
             this.setState({
                 seo:res.data, 
             })
-
+            console.log(this.state.seo+"data from seo")
+         
            
         }
         this.setState({
@@ -43,7 +63,7 @@ class SecondPage extends React.Component{
     })
     // console.log("hello"+request);
 
-    axios.get('http://localhost:5000/tally_reports')
+    axios.post('http://localhost:5000/tally_reports/getByUrl',loc)
     .then(res=>{
         if(res.data.length >0){
             this.setState({
@@ -60,11 +80,18 @@ class SecondPage extends React.Component{
          aoda_results: this.state.aoda[0].results
 
         })
-       console.log(this.state.aoda[0].results[0]);
-        
+       console.log(this.state.aoda[0].results[0]);  
     })
+    
+
+    axios.post('http://localhost:5000/email/sendEmail/',email).then((res)=>{
+      console.log("Mail done");
+    });
+
   
      }
+
+
      
     render() {
 

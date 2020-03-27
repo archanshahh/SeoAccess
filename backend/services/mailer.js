@@ -4,16 +4,19 @@ const nodemailer = require('nodemailer');
 const path = require('path');
 
 module.exports = {
-  async doEmail(toEmail){
+  async doEmail(toEmail,url){
+    var emailadd = toEmail;
+    console.log(emailadd);
     const browser = await puppeteer.launch();
     const page = await browser.newPage();
-    await page.goto("https://github.com/TeamAlphaCAPSTONE/TeamAlphaCapstone/tree/Archan", {
+    await page.goto("http://localhost:3000/secondPage/"+toEmail+'/'+url, {
       waitUntil: "networkidle2"
     });
+    console.log("http://localhost:3000/secondPage/"+toEmail+'/'+url);
     await page.setViewport({ width: 1680, height: 1050 });
     await page.emulateMedia('screen'); 
     await page.pdf({
-      path: "./../services/report.pdf",
+      path: "./../backend/services/report.pdf",
       displayHeaderFooter: true,
       printBackground: true,
       format: "A4"
@@ -35,7 +38,7 @@ module.exports = {
     // send mail with defined transport object
     let info = await transporter.sendMail({
       from: '"Scrapper 👻" <testscrapper9@gmail.com>', // sender address
-      to: "aaarchannn@gmail.com", // list of receivers
+      to: emailadd, // list of receivers
       subject: "Report from Scrapper ✔",
       text: "testing",
       html: "<b>Report</b><br/>", //body
@@ -47,7 +50,7 @@ module.exports = {
                   }
               ]
     });
-  
+  console.log("http://localhost:3000/secondPage/"+toEmail+url);
     console.log("Mail delivered", info.messageId);
   }
 }
