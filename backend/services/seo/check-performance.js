@@ -1,5 +1,4 @@
 const psi = require('psi');
-const fs = require('fs');
 //const url = 'https://www.partial.gallery/directory';
 
 module.exports = {
@@ -22,7 +21,7 @@ module.exports = {
       FCI: outp.metrics.details.items[0].firstCPUIdle,
       TTI: outp.metrics.details.items[0].interactive
     }
-    data3 = JSON.stringify(outp,null,2)
+    // data3 = JSON.stringify(outp,null,2)
     // console.log('First Contentful Paint: '+outp.metrics.details.items[0].firstContentfulPaint);
     // console.log('Speed Index: '+outp.metrics.details.items[0].speedIndex);
     // console.log('First Meaningful Paint: '+outp.metrics.details.items[0].firstMeaningfulPaint);

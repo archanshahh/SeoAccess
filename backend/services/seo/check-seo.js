@@ -15,14 +15,19 @@ var default_rules = checker.mergeRules(
 );
 module.exports = {
     checkSEO(url) {
-        // get webpage content as readable stream
-        https.get(url, (rs) => {
-            // prepare writable stream for output file
-            var ws = fs.createWriteStream('./seo-results.txt');
-            checker.check(rs, default_rules, ws);
-        });
-        
-        return true;
+        try {
+            // get webpage content as readable stream
+            https.get(url, (rs) => {
+                // prepare writable stream for output file
+                var ws = fs.createWriteStream('./seo-results.txt');
+                checker.check(rs, default_rules, ws);
+            });
+            return true;
+        }
+        catch (error) {
+            console.log("Error: " + error);
+        }
+
     }
 }
 

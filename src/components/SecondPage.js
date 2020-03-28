@@ -1,8 +1,9 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import axios from 'axios';
 import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
 import ChangingProgressProvider from "./ChangingProgressProvider";
 import '../css/new.css';
+
 class SecondPage extends React.Component {
   constructor(props) {
     super(props)
@@ -18,8 +19,6 @@ class SecondPage extends React.Component {
       aoda_results: [],
       url: "",
       email: ""
-
-
     }
 
 
@@ -33,7 +32,7 @@ class SecondPage extends React.Component {
     const loc = {
       location: urlfetch
     }
-   
+
 
 
     axios.post('http://localhost:5000/seo_reports/getByUrl', loc)
@@ -45,8 +44,6 @@ class SecondPage extends React.Component {
             seo: res.data,
           })
           console.log(this.state.seo + "data from seo")
-
-
         }
         this.setState({
           Performance_result: this.state.seo[0].performance_results
@@ -106,18 +103,11 @@ class SecondPage extends React.Component {
     }
 
     axios.post('http://localhost:5000/email/sendEmail/', email).then((res) => {
-    //break
-    console.log(res.data + "response from mail");
-  });
+      //break
+      console.log(res.data + "response from mail");
 
- 
-   
-
-}
-
-
-
-
+    });
+  }
 
   render() {
 
@@ -125,24 +115,16 @@ class SecondPage extends React.Component {
       <li className="list-group-item">{value}</li>
     );
 
-
-
-
     const result = this.state.aoda_results.map((d) =>
       <div>
         <li className="list-group-item"><h5>Type:</h5>  {d.type}<br />
           <h5> Description:</h5>  {d.description} <br />
           <h5> Impact:</h5> <b>{d.impact}</b>
-
-
         </li>
         {/* <li className="list-group-item" key={d.description}>{d.description}</li> */}
       </div>
 
     )
-
-  
-
 
     return (
       <div className="container-fluid space">
@@ -275,17 +257,17 @@ class SecondPage extends React.Component {
         </div>
 
         <form className="centre-block mt-4 mx-auto w-50" onSubmit={this.onSubmit}>
-                     
-                        <div className="form-group">
-                            <button type="submit" className="btn btn-primary d-block mt-4 mx-auto">Send Report</button>
-                            {/* <input className="btn btn-primary d-block mt-4 mx-auto"  type="submit" value="See Report" className="btn btn-primary" /> */}
-                        </div>
-                        {/* <Button variant="btn btn-success" >See Report</Button> */}
-                        {/* onClick={() => history.push('/secondPage')} */}
 
-                        {/* <button type="submit" className="btn btn-primary d-block mt-4 mx-auto" onClick={history.push('/secondPage')}>See report</button> */}
+          <div className="form-group">
+            <button type="submit" className="btn btn-primary d-block mt-4 mx-auto">Send Report</button>
+            {/* <input className="btn btn-primary d-block mt-4 mx-auto"  type="submit" value="See Report" className="btn btn-primary" /> */}
+          </div>
+          {/* <Button variant="btn btn-success" >See Report</Button> */}
+          {/* onClick={() => history.push('/secondPage')} */}
 
-                    </form>
+          {/* <button type="submit" className="btn btn-primary d-block mt-4 mx-auto" onClick={history.push('/secondPage')}>See report</button> */}
+
+        </form>
 
       </div>
 

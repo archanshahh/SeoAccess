@@ -28,7 +28,6 @@ function getTotalTags(url){
     
         let len;
         let getData = html => {
-            data = [];
             const $ = cheerio.load(html);
             len = $('*').length;
     

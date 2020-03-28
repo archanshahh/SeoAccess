@@ -59,7 +59,7 @@ class FirstPage extends React.Component {
             this.setState(prevState => ({
                 count: this.state.count + 10
             }))
-            if (this.state.count == 100) {
+            if (this.state.count === 100) {
                 console.log("inside if" + this.state.count)
 
                 // axios.post('http://localhost:5000/email/sendEmail', email)

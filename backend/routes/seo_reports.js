@@ -1,11 +1,8 @@
 const express = require('express');
 const router = express.Router();
 const checkSEO = require('./../services/seo/index');
-
 let Seo_report = require('../models/seo_report.model');
-let seo_report;
-
-const queryString = require('query-string');
+// let seo_report;
 
 router.route('/url').post((req, res) => {
     try {
@@ -42,9 +39,7 @@ router.post('/getByUrl', async (req, res) => {
 });
 router.route('/').get((req, res) => {
     Seo_report.find({})
-        .then(seo_reports => res.json(seo_reports),
-
-        )
+        .then(seo_reports => res.json(seo_reports))
         .catch(err => res.status(400).json('Error: ' + err))
 });
 async function callSEO(url) {
@@ -58,6 +53,7 @@ async function callSEO(url) {
             errors: seo_report.summary.errors,
             total_rules: seo_report.summary.total_rules
         };
+        // eslint-disable-next-line no-array-constructor
         var arr = Array();
         for (var i = 0; i < seo_report.seo_results.length; i++) {
             arr.push(seo_report.seo_results[i]);
@@ -87,6 +83,9 @@ async function callSEO(url) {
         // .then(()=> res.json('Seo report added'))
         // .catch((err)=> res.status(400).json('Error: '+err));
         // });
+    })
+    .catch((err)=>{
+        console.log("Error "+err);
     });
 
 }
