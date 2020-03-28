@@ -26,6 +26,7 @@ module.exports = {
                     for (var i = 0; i < l; i++) {
                         //write type code
 
+                        // eslint-disable-next-line no-new-object
                         const result = new Object({
                             type: output.results[newURL].rules[i].type,
                             impact: output.results[newURL].rules[i].impact,
@@ -38,6 +39,7 @@ module.exports = {
                     //console.log(arr.get());
                     let newArr = arr.get();
                     //console.log(JSON.parse(newArr[0]));
+                    // eslint-disable-next-line no-array-constructor
                     arr = new Array();
                     newArr.forEach(element => {
                         arr.push(JSON.parse(element));
@@ -50,6 +52,7 @@ module.exports = {
                     let tempScore = 100-temp;
 
 
+                    // eslint-disable-next-line no-new-object
                     let tally_report = new Object({
                         url: url,
                         summary: {
@@ -67,6 +70,9 @@ module.exports = {
                         reject('Error!!!');
                     }
 
+                })
+                .catch((error)=>{
+                    console.log("Error: "+error);
                 })
         });
     }

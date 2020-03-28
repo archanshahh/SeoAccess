@@ -5,8 +5,6 @@ const mailer = require('./../services/mailer');
 
 
 router.route('/sendEmail').post((req, res) => {
-
-
     try {
         const email = req.body.email;
 
@@ -14,13 +12,10 @@ router.route('/sendEmail').post((req, res) => {
         console.log("backend mailer.js")
 
         mailer.doEmail(email, url)
-         res.send(" mail done");
-
+        res.send(" mail done");
     } catch (err) {
-        res.send(err);
+        res.send("Error "+err);
     }
-
-
 })
 
 
