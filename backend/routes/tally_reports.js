@@ -5,16 +5,15 @@ const check_accessibility = require('./../services/accessibilty/index');
 //let url = 'https://worlds-highest-website.com/';
 
 
-router.route('/url').post((req,res)=>{
-    try{
- const url=req.body.url;
- console.log("backend"+url)
- res.send("got it from tally")
- callAcc(url);
+router.route('/url').post((req, res) => {
+    try {
+        const url = req.body.url;
+        //  console.log("backend"+url)
+        res.send("got it from tally")
+        callAcc(url);
     }
-    catch(err)
-    {
-        res.send(err)
+    catch (err) {
+        res.send("Error " + err)
     }
 
 })
@@ -23,45 +22,47 @@ router.route('/url').post((req,res)=>{
 async function callAcc(url) {
     await check_accessibility.callAccessbility(url).then((tally_report) => {
         // router.route('/add').post((req, res) => {
-            //const errors = req.body.summary.errors;
-            console.log(tally_report);
-            const url = tally_report.url;
-            const summary = {
-                errors: tally_report.summary.errors,
-                warnings: tally_report.summary.warnings,
-                total_tags: tally_report.summary.total_tags
-            };
-            var arr = Array();
+        //const errors = req.body.summary.errors;
+        //  console.log(tally_report);
+        const url = tally_report.url;
+        const summary = {
+            errors: tally_report.summary.errors,
+            warnings: tally_report.summary.warnings,
+            total_tags: tally_report.summary.total_tags
+        };
+        // eslint-disable-next-line no-array-constructor
+        var arr = Array();
 
-            //arr.push()
-            for (var i = 0; i < tally_report.results.length; i++) {
-                const result = new Object({
-                    type: tally_report.results[i].type,
-                    impact: tally_report.results[i].impact,
-                    description: tally_report.results[i].description,
-                    helpURL: tally_report.results[i].helpURL
-                })
-                arr.push(result);
-            }
-            const results = arr;
+        //arr.push()
+        for (var i = 0; i < tally_report.results.length; i++) {
+            // eslint-disable-next-line no-new-object
+            const result = new Object({
+                type: tally_report.results[i].type,
+                impact: tally_report.results[i].impact,
+                description: tally_report.results[i].description,
+                helpURL: tally_report.results[i].helpURL
+            })
+            arr.push(result);
+        }
+        const results = arr;
 
-            const score = tally_report.score;
+        const score = tally_report.score;
 
-            const nTally = new Tally_report({
-                url,
-                summary,
-                results,
-                score
-            });
+        const nTally = new Tally_report({
+            url,
+            summary,
+            results,
+            score
+        });
 
-            nTally.save()
-                // .then(() => {
-                //     res.json('Tally report added');
-                // })
-                // .catch((err) => console.log(err));
+        nTally.save()
+        // .then(() => {
+        //     res.json('Tally report added');
+        // })
+        // .catch((err) => console.log(err));
         // });
-    }).catch((e)=>{
-        console.error(e);
+    }).catch((e) => {
+        console.error("Error: "+e);
     });
     //return tally_report;
 }
@@ -77,17 +78,19 @@ router.route('/').get((req, res) => {
 });
 router.post('/getByUrl', async (req, res) => {
     try {
-        console.log("inside")
-      const data = await Tally_report.find({
-         url: req.body.url});
-      if (!data) {
-        return res.status(404).send('tally url not  found');
-      }
-      res.send(data);
+        // console.log("inside")
+        // console.log(req.body.location);
+        const data = await Tally_report.find({
+            url: req.body.location
+        });
+        if (!data) {
+            return res.status(404).send('tally url not  found');
+        }
+        res.send(data);
     } catch (err) {
-      res.status(500).send('Server error');
+        res.status(500).send('Server error');
     }
-  });
+});
 
 
 

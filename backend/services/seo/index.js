@@ -4,7 +4,6 @@ const fs = require('fs');
 const split = require('string-split-by');
 let seo_report;
 var arrOfSEOResult, perf_result;
-let url;
 
 
 //checking performance
@@ -121,7 +120,7 @@ module.exports = {
 //remove seo-results.txt as we dont need it after reading
 function removeFile() {
     fs.unlink('./seo-results.txt', function (err) {
-        if (err && err.code == 'ENOENT') {
+        if (err && err.code === 'ENOENT') {
             // file doens't exist
             console.info("File doesn't exist, won't remove it.");
         } else if (err) {
