@@ -1,14 +1,14 @@
 import React from 'react';
-import Header from './header';
-import Footer from './footer';
-import './App.css';
-import FirstPage from './main';
-import AboutPage from'./about';
-import ContactUs from './contact';
-import SecondPage from './SecondPage';
+import Header from './components/header';
+import Footer from './components/footer';
+import './css/App.css';
+import FirstPage from './components/main';
+import AboutPage from'./components/about';
+import ContactUs from './components/contact';
+import SecondPage from './components/SecondPage';
 import { Router, Route, Link,Switch } from "react-router-dom";
-import history from './history';
-import New from './new'
+import history from './components/history';
+import New from './components/new'
 class App extends React.Component{
   render() {
     return (

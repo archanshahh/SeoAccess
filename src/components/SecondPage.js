@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import axios from 'axios';
 import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
 import ChangingProgressProvider from "./ChangingProgressProvider";
-import './new.css';
+import '../css/new.css';
 class SecondPage extends React.Component {
   constructor(props) {
     super(props)

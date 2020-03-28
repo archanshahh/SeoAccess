@@ -1,6 +1,6 @@
 import React from 'react';
 import { CircularProgressbar } from 'react-circular-progressbar';
-import './new.css';
+import '../css/new.css';
 const percentage = 66;
 
 export default class New extends React.Component {
