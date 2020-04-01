@@ -25,7 +25,7 @@ module.exports = {
             return true;
         }
         catch (error) {
-            console.log("Error: " + error);
+            console.log("Error in check-seo: " + error);
         }
 
     }
