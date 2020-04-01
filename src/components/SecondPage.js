@@ -16,9 +16,14 @@ class SecondPage extends React.Component {
       seo_result: [],
       aoda_summary: [],
       aoda_score: "",
-      aoda_results: [],
+      serious_impact_result: [],
+      minor_impact_result: [],
+      moderate_impact_result: [],
+      critical_impact_result: [],
+      others_impact_result: [],
       url: "",
-      email: ""
+      email: "",
+      seo_summary: []
     }
 
 
@@ -46,6 +51,9 @@ class SecondPage extends React.Component {
           console.log(this.state.seo + "data from seo")
         }
         this.setState({
+          seo_summary: this.state.seo[0].summary
+        })
+        this.setState({
           Performance_result: this.state.seo[0].performance_results
         })
         this.setState({
@@ -72,10 +80,15 @@ class SecondPage extends React.Component {
           aoda_score: this.state.aoda[0].score
         })
         this.setState({
-          aoda_results: this.state.aoda[0].results
+          // aoda_results: this.state.aoda[0].results
+          serious_impact_result: this.state.aoda[0].serious_impact_result,
+          minor_impact_result: this.state.aoda[0].minor_impact_result,
+          moderate_impact_result: this.state.aoda[0].moderate_impact_result,
+          critical_impact_result: this.state.aoda[0].critical_impact_result,
+          others_impact_result: this.state.aoda[0].others_impact_result
 
         })
-        console.log(this.state.aoda[0].results[0]);
+        // console.log(this.state.aoda[0].results[0]);
 
       })
     // axios.post('http://localhost:5000/email/sendEmail/', email).then((res) => {
@@ -112,18 +125,34 @@ class SecondPage extends React.Component {
   render() {
 
     var items = this.state.seo_result.map((value) =>
-      <li className="list-group-item">{value}</li>
+      <li className="list-group-item ">{value}</li>
     );
 
-    const result = this.state.aoda_results.map((d) =>
+    const serious = this.state.serious_impact_result.map((d) =>
       <div>
-        <li className="list-group-item"><h5>Type:</h5>  {d.type}<br />
-          <h5> Description:</h5>  {d.description} <br />
-          <h5> Impact:</h5> <b>{d.impact}</b>
-        </li>
-        {/* <li className="list-group-item" key={d.description}>{d.description}</li> */}
+        <li class="list-group-item">{d.description}</li>
       </div>
+    )
+    const minor = this.state.minor_impact_result.map((d) =>
+      <div>
+        <li class="list-group-item">{d.description}</li>
+      </div>
+    )
+    const critical = this.state.critical_impact_result.map((d) =>
+      <div>
+        <li class="list-group-item">{d.description}</li>
+      </div>
+    )
+    const moderate = this.state.moderate_impact_result.map((d) =>
+      <div>
+        <li class="list-group-item">{d.description}</li>
+      </div>
+    )
 
+    const others = this.state.others_impact_result.map((d) =>
+      <div>
+        <li class="list-group-item">{d.description}</li>
+      </div>
     )
 
     return (
@@ -155,39 +184,41 @@ class SecondPage extends React.Component {
               </div>
             </div>
             <div className="row justify-content-center">
+              <div class="btn-group space" role="group" aria-label="Basic example">
+                <button type="button" class="btn btn-danger">Errors :  {this.state.seo_summary.errors}</button>
+                {/* <button type="button" class="btn btn-warning">Warnings:{this.state.aoda_summary.warnings}</button> */}
+                <button type="button" class="btn btn-success">Total Rules :  {this.state.seo_summary.total_rules}</button>
+              </div>
               <div className="panel-group">
                 <div className="panel panel-default">
-                  <div className="panel-heading">
-                    <h4 className="panel-title">
-                      <p data-toggle="collapse" href="#collapse1">Performance Result <i className="fas fa-angle-double-down right"></i></p>
-                    </h4>
-                  </div>
-                  <div id="collapse1" className="panel-collapse uncollapse">
-                    <ul className="list-group">
-
-
-                      <li className="list-group-item" >First Contentful Paint: {this.state.Performance_result.FCP}</li>
-                      <li className="list-group-item">First CPU Idle: {this.state.Performance_result.FCI}</li>
-                      <li className="list-group-item">First Meaningful Paint: {this.state.Performance_result.FMP}</li>
-                      <li className="list-group-item">Speed Index:  {this.state.Performance_result.SI}</li>
-                      <li className="list-group-item">Time To Interactive: {this.state.Performance_result.TTI}</li>
-                    </ul>
-
-                  </div>
 
                   <div className="panel-heading">
                     <h4 className="panel-title">
-                      <p data-toggle="collapse" href="#collapse2">Result <i className="fas fa-angle-double-down right"></i></p>
+                      <p data-toggle="collapse" href="#collapse2">SEO Issues<i className="fas fa-angle-double-down right left-space"></i> <i class="fa fa-circle right left-space" style={{ color: '#ff0000' }}></i></p>
                     </h4>
                   </div>
-                  <div id="collapse2" className="panel-collapse uncollapse">
+                  <div id="collapse2" className="panel-collapse show">
                     <ul className="list-group">
                       {items}
-
-                      {/* <li className="list-group-item">Four</li>
-                        <li className="list-group-item">Five</li>
-                        <li className="list-group-item">Six</li> */}
                     </ul>
+                  </div>
+
+                  <div className="panel-heading">
+                    <h4 className="panel-title">
+                      <p data-toggle="collapse" href="#collapse1">Performance<i className="fas fa-angle-double-down right left-space"></i> <i class="fa fa-circle right left-space" style={{ color: '#808080' }}></i></p>
+                    </h4>
+                  </div>
+                  <div id="collapse1" className="panel-collapse show">
+                    <ul className="list-group">
+
+
+                      <li className="list-group-item" >First Contentful Paint: {this.state.Performance_result.FCP}ms</li>
+                      <li className="list-group-item">First CPU Idle: {this.state.Performance_result.FCI}ms</li>
+                      <li className="list-group-item">First Meaningful Paint: {this.state.Performance_result.FMP}ms</li>
+                      <li className="list-group-item">Speed Index:  {this.state.Performance_result.SI}ms</li>
+                      <li className="list-group-item">Time To Interactive: {this.state.Performance_result.TTI}ms</li>
+                    </ul>
+
                   </div>
                 </div>
               </div>
@@ -219,37 +250,88 @@ class SecondPage extends React.Component {
                   )}
                 </ChangingProgressProvider>
 
+
               </div>
             </div>
             <div className="row justify-content-center">
+              <div class="btn-group space" role="group">
+                <button type="button" class="btn btn-danger">Errors :  {this.state.aoda_summary.errors}</button>
+                <button type="button" class="btn btn-warning">Warnings :  {this.state.aoda_summary.warnings}</button>
+                <button type="button" class="btn btn-success">Total Elements :  {this.state.aoda_summary.total_tags}</button>
+              </div>
               <div className="panel-group">
                 <div className="panel panel-default">
-                  <div className="panel-heading">
-                    <h4 className="panel-title">
-                      <p data-toggle="collapse" href="#collapse3">Summary <i className="fas fa-angle-double-down right"></i></p>
-                    </h4>
-                  </div>
-                  <div id="collapse3" className="panel-collapse uncollapse">
-                    <ul className="list-group">
-                      <li className="list-group-item">Errors:{this.state.aoda_summary.errors}</li>
-                      <li className="list-group-item">Warnings:{this.state.aoda_summary.warnings}</li>
-                      <li className="list-group-item">Total Tags:{this.state.aoda_summary.total_tags}</li>
-                    </ul>
-                  </div>
 
-                  <div className="panel-heading">
-                    <h4 className="panel-title">
-                      <p data-toggle="collapse" href="#collapse4">Aoda Results <i className="fas fa-angle-double-down right"></i></p>
-                    </h4>
-                  </div>
-                  <div id="collapse4" className="panel-collapse uncollapse">
-                    <ul className="list-group">
-                      {result}
-                      {/* <li className="list-group-item">Four</li>
-                        <li className="list-group-item">Five</li>
-                        <li className="list-group-item">Six</li> */}
-                    </ul>
-                  </div>
+                {this.state.critical_impact_result.length > 0 ?
+                    <div>
+                      <div className="panel-heading">
+                        <h4 className="panel-title">
+                          <p data-toggle="collapse" href="#critical">Critical Issues<i className="fas fa-angle-double-down right left-space"></i> <i class="fa fa-circle right left-space" style={{ color: '#ff0000' }}></i></p>
+                        </h4>
+                      </div>
+                      <div id="critical" className="panel-collapse show">
+                        <ul className="list-group">
+                          {critical}
+                        </ul>
+                      </div>
+                    </div> : null}
+
+                  {this.state.serious_impact_result.length > 0 ?
+                    <div>
+                      <div className="panel-heading">
+                        <h4 className="panel-title">
+                          <p data-toggle="collapse" href="#serious">Serious Issues<i className="fas fa-angle-double-down right left-space"></i> <i class="fa fa-circle right left-space" style={{ color: '#ff9900' }}></i></p>
+                        </h4>
+                      </div>
+                      <div id="serious" className="panel-collapse collapse show">
+                        <ul className="list-group">
+                          {serious}
+                        </ul>
+                      </div>
+                    </div> : null}
+
+                  {this.state.moderate_impact_result.length > 0 ?
+                    <div>
+                      <div className="panel-heading">
+                        <h4 className="panel-title">
+                          <p data-toggle="collapse" href="#moderate">Moderate Issues<i className="fas fa-angle-double-down right left-space"></i> <i class="fa fa-circle right left-space" style={{ color: '#FFFF00' }}></i></p>
+                        </h4>
+                      </div>
+                      <div id="moderate" className="panel-collapse show">
+                        <ul className="list-group">
+                          {moderate}
+                        </ul>
+                      </div>
+                    </div> : null}
+
+                  {this.state.minor_impact_result.length > 0 ?
+                    <div>
+                      <div className="panel-heading">
+                        <h4 className="panel-title">
+                          <p data-toggle="collapse" href="#minor">Minor Issues<i className="fas fa-angle-double-down right left-space"></i> <i class="fa fa-circle right left-space" style={{ color: '#6BCAE2' }}></i></p>
+                        </h4>
+                      </div>
+                      <div id="minor" className="panel-collapse show">
+                        <ul className="list-group">
+                          {minor}
+                        </ul>
+                      </div>
+                    </div> : null}
+
+                  {this.state.others_impact_result.length > 0 ?
+                    <div>
+                      <div className="panel-heading">
+                        <h4 className="panel-title">
+                          <p data-toggle="collapse" href="#others">Issues<i className="fas fa-angle-double-down right left-space"></i> <i class="fa fa-circle right left-space" style={{ color: '#808080' }}></i></p>
+                        </h4>
+                      </div>
+                      <div id="others" className="panel-collapse show">
+                        <ul className="list-group">
+                          {others}
+                        </ul>
+                      </div>
+                    </div> : null}
+
                 </div>
               </div>
             </div>
@@ -259,14 +341,8 @@ class SecondPage extends React.Component {
         <form className="centre-block mt-4 mx-auto w-50" onSubmit={this.onSubmit}>
 
           <div className="form-group">
-            <button type="submit" className="btn btn-primary d-block mt-4 mx-auto">Send Report</button>
-            {/* <input className="btn btn-primary d-block mt-4 mx-auto"  type="submit" value="See Report" className="btn btn-primary" /> */}
+            <button type="submit" className="btn btn-primary d-block mt-4 mx-auto">Email Report</button>
           </div>
-          {/* <Button variant="btn btn-success" >See Report</Button> */}
-          {/* onClick={() => history.push('/secondPage')} */}
-
-          {/* <button type="submit" className="btn btn-primary d-block mt-4 mx-auto" onClick={history.push('/secondPage')}>See report</button> */}
-
         </form>
 
       </div>
