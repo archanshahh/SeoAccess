@@ -40,9 +40,9 @@ module.exports = {
 
       // send mail with defined transport object
       let info = await transporter.sendMail({
-        from: '"Scrapper 👻" <testscrapper9@gmail.com>', // sender address
+        from: '"Scrapper 👻" <testscrapper@gmail.com>', // sender address
         to: emailadd, // list of receivers
-        subject: "Report from Scrapper ✔",
+        subject: "Report from  ✔",
         text: "testing",
         html: "<b>Report</b><br/>", //body
         attachments: [
