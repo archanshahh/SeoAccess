@@ -125,7 +125,7 @@ class FirstPage extends React.Component {
                     <div className="d-flex flex-column align-items-center text-center">
                         {/* <div className="border border-dark w-100 align-items-center text-center"> */}
                         <h2 style={{ color: "white" }}>
-                            Title
+                            SeoAccess
                     </h2>
 
                         <div className="border border-dark border-3 w-50 textcolor mt-2">
@@ -194,6 +194,7 @@ class FirstPage extends React.Component {
              
                 </div> */}
                     {/* <ProgressBar  animated now={count}  label={`${count}%`} /> */}
+                    <br/><br/><br/><br/><br/><br/>
                     <div>
                         <ProgressBar animated striped variant="success" now={this.state.count} label={`${this.state.count}%`} key={1} />
                     </div>

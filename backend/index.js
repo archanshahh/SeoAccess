@@ -6,6 +6,9 @@ const tally_reportsRouter = require('./routes/tally_reports');
 const seo_reportsRouter = require('./routes/seo_reports');
 const email=require('./routes/mailers');
 
+
+const port = process.env.PORT || 5000;
+
 //connect to db
 connectDB();
 
@@ -21,5 +24,5 @@ app.use('/email',email);
 //get results
 
 
-app.listen(5000);
-console.log('Server running on port 5000');
+app.listen(port);
+console.log(`Server running on `+port);

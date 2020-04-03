@@ -15,7 +15,7 @@ const Header = (props) => {
             
                 <ul className="navbar-nav mb-2 ">
                     <li className="nav-item active flex-row">
-                        <a className="nav-link py-1 pr-3 h1" href="#">Scrapper</a>
+                        <a className="nav-link py-1 pr-3 h1" href="#">SeoAccess</a>
                     </li>
                     <div className="border border-dark border-3 h-50 textcolor active">
                         <li className="nav-item nav-link">

@@ -19,7 +19,7 @@ class App extends React.Component{
       <Route path="/about" component={AboutPage}></Route>
       <Route path="/contact" component={ContactUs}></Route>
       <Route path="/secondPage/:email/:id//:url+"component={SecondPage}></Route>
-
+      <br></br>
         <Footer />
         </Router>
          
