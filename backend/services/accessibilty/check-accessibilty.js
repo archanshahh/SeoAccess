@@ -31,7 +31,6 @@ module.exports = {
                         //write type code
 
                         // eslint-disable-next-line no-new-object
-
                         const result = new Object({
                             type: output.results[newURL].rules[i].type,
                             impact: output.results[newURL].rules[i].impact,
