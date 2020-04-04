@@ -3,6 +3,7 @@ import axios from 'axios';
 import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
 import ChangingProgressProvider from "./ChangingProgressProvider";
 import '../css/new.css';
+import alert from 'alert-node'
 
 class SecondPage extends React.Component {
   constructor(props) {
@@ -63,6 +64,10 @@ class SecondPage extends React.Component {
           seo_result: this.state.seo[0].seo_results
         })
       })
+      .catch((e)=>{
+        alert('Error in generating report!\nPlease try again later or Get in touch with us!')
+        window.location = '/';
+      })
     // console.log("hello"+request);
 
     axios.post('http://localhost:5000/tally_reports/getByUrl', loc)
@@ -91,6 +96,10 @@ class SecondPage extends React.Component {
         // console.log(this.state.aoda[0].results[0]);
 
       })
+      .catch((e)=>{
+        alert('Error in generating report!\nPlease try again later or Get in touch with us!')
+        window.location = '/';
+      })
     // axios.post('http://localhost:5000/email/sendEmail/', email).then((res) => {
     //   //break
     //   console.log(res.data + "response from mail");
@@ -115,10 +124,9 @@ class SecondPage extends React.Component {
       location: urlfetch
     }
 
-    axios.post('http://localhost:5000/email/sendEmail/', email).then((res) => {
+    await axios.post('http://localhost:5000/email/sendEmail/', email).then((res) => {
       //break
       console.log(res.data + "response from mail");
-
     });
   }
 

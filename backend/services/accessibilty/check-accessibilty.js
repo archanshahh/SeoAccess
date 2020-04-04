@@ -1,9 +1,7 @@
 const { Ta11y } = require('@ta11y/core')
 const Set = require('set');
-//const fs = require('fs')
 const ta11y = new Ta11y()
-//const url = 'https://worlds-highest-website.com/';
-
+const notifier = require('node-notifier');
 
 module.exports = {
 
@@ -113,11 +111,12 @@ module.exports = {
                         console.log(tally_report);
                         resolve(tally_report)
                     } else {
+                        notifier.notify('Error in generating accessibility compliance report!\nPlease try again later or Get in touch with us!');
                         reject('Error!!!');
                     }
-
                 })
                 .catch((error) => {
+                    notifier.notify('Error in generating accessibility compliance report!\nPlease try again later or Get in touch with us!');
                     console.log("Error in check-accessibility: " + error);
                 })
         });

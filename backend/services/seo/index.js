@@ -4,7 +4,7 @@ const fs = require('fs');
 const split = require('string-split-by');
 let seo_report;
 var arrOfSEOResult, perf_result;
-
+const notifier = require('node-notifier');
 
 //checking performance
 function checkPerformance(url) {
@@ -92,16 +92,14 @@ module.exports = {
                     seo_report = createReportObject(url);
                     //console.log(seo_report);
                     return seo_report;
-                    // if(seo_report){
-                    //     resolve(seo_report)
-                    // }
-                    // else{
-                    //     reject("Error in seo report")
-                    // }
-                    // return true;
+                    
+                }
+                else{
+                    notifier.notify('Error in generating SEO report!\nPlease try again later or Get in touch with us!');
                 }
             }
         } catch (error) {
+            notifier.notify('Error in generating SEO report!\nPlease try again later or Get in touch with us!');
             console.log('Error in seo/index.js: '+error);
         }
 

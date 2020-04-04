@@ -1,6 +1,7 @@
 const fs = require('fs');
 const https = require('https');
 const checker = require('seo-checker-js');
+const notifier = require('node-notifier');
 
 let rule_custom1 = new checker.Rule('html').included('h1');
 
@@ -25,6 +26,7 @@ module.exports = {
             return true;
         }
         catch (error) {
+            notifier.notify('Error in scanning your web page!\nPlease try again later or Get in touch with us!');
             console.log("Error in check-seo: " + error);
         }
 

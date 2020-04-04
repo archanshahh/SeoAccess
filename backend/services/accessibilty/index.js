@@ -2,6 +2,8 @@ const check_accessibility = require('./check-accessibilty')
 //  const url = 'https://www.dndstrategy.com/strategic-marketing-consulting/';
  const axios = require('axios');
 const cheerio = require('cheerio');
+const notifier = require('node-notifier');
+
 
 module.exports = {
     async callAccessbility(url){
@@ -23,6 +25,7 @@ function getTotalTags(url){
                 // console.log(response.data);
             })
             .catch(error => {
+                notifier.notify('Error in scanning your web page!\nPlease try again later or Get in touch with us!');
                 console.log("Error in axios"+error);
             })
     
@@ -36,6 +39,7 @@ function getTotalTags(url){
                 resolve(len)
             }
             else{
+                notifier.notify('Error in scanning your web page!\nPlease try again later or Get in touch with us!');
                 reject("Error in finding tags!!!");
             }
 

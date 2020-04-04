@@ -2,9 +2,9 @@
 const puppeteer = require("puppeteer");
 const nodemailer = require('nodemailer');
 const path = require('path');
-// const swal = require('sweetalert');
+const notifier = require('node-notifier');
 
-// swal("Hello world!");
+
 module.exports = {
   async doEmail(toEmail, url) {
     try {
@@ -40,9 +40,9 @@ module.exports = {
 
       // send mail with defined transport object
       let info = await transporter.sendMail({
-        from: '"Scrapper 👻" <testscrapper@gmail.com>', // sender address
+        from: '"SeoAccess 👻" <testscrapper@gmail.com>', // sender address
         to: emailadd, // list of receivers
-        subject: "Report from  ✔",
+        subject: "Report from SeoAccess",
         text: "testing",
         html: "<b>Report</b><br/>", //body
         attachments: [
@@ -55,10 +55,11 @@ module.exports = {
       });
       console.log("http://localhost:3000/secondPage/" + toEmail + url);
       console.log("Mail delivered", info.messageId);
-      // swal('Mail done');
+      notifier.notify('Mail Delivered!');
       return "Mail done!";
     } catch (error) {
       console.error(error);
+      notifier.notify('Mail not Delivered!\nPlease try agian later or Get in touch with us!');
       return error;
     }
 

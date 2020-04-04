@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo test",
     "start": "node index.js",
-    "build": "node index.js"
+    "build": ""
   },
   "author": "",
   "license": "ISC",
@@ -16,8 +16,11 @@
     "config": "^3.3.0",
     "cors": "^2.8.5",
     "express": "^4.17.1",
+    "forever": "^2.0.0",
     "js-alert": "^1.0.4",
     "mongoose": "^5.9.2",
+    "node-notifier": "^6.0.0",
+    "node-popup": "^0.1.14",
     "nodemailer": "^6.4.5",
     "psi": "^4.0.1",
     "puppeteer": "^2.1.1",
