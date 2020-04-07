@@ -5,8 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo test",
-    "start": "node index.js",
-    "build": ""
+    "start": "npm i && node index.js"
   },
   "author": "",
   "license": "ISC",
@@ -31,5 +30,8 @@
     "split-string": "^6.1.0",
     "string-split-by": "^1.0.0",
     "sweetalert": "^2.1.2"
+  },
+  "engines" : {
+    "node":"12.x"
   }
 }

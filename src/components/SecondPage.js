@@ -41,7 +41,7 @@ class SecondPage extends React.Component {
 
 
 
-    axios.post('http://localhost:5000/seo_reports/getByUrl', loc)
+    axios.post('https://seoaccess-server.herokuapp.com/seo_reports/getByUrl', loc)
       .then(res => {
         console.log(res.data + "hhih")
 
@@ -70,7 +70,7 @@ class SecondPage extends React.Component {
       })
     // console.log("hello"+request);
 
-    axios.post('http://localhost:5000/tally_reports/getByUrl', loc)
+    axios.post('https://seoaccess-server.herokuapp.com/tally_reports/getByUrl', loc)
       .then(res => {
         if (res.data.length > 0) {
           this.setState({
@@ -124,7 +124,7 @@ class SecondPage extends React.Component {
       location: urlfetch
     }
 
-    await axios.post('http://localhost:5000/email/sendEmail/', email).then((res) => {
+    await axios.post('https://seoaccess-server.herokuapp.com/email/sendEmail/', email).then((res) => {
       //break
       console.log(res.data + "response from mail");
     });

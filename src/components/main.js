@@ -49,8 +49,8 @@ class FirstPage extends React.Component {
         console.log(this.state.url)
         console.log(this.state.email)
 
-        await axios.post('http://localhost:5000/seo_reports/url/', url);
-        await axios.post('http://localhost:5000/tally_reports/url/', url);
+        await axios.post('https://seoaccess-server.herokuapp.com/seo_reports/url/', url);
+        await axios.post('https://seoaccess-server.herokuapp.com/tally_reports/url/', url);
         this.myInterval = setInterval(() => {
             this.setState(prevState => ({
                 count: this.state.count + 10

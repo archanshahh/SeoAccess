@@ -10,16 +10,21 @@ module.exports = {
     try {
       var emailadd = toEmail;
       console.log("inside mailer.js inside inside");
-      const browser = await puppeteer.launch();
+      const browser = await puppeteer.launch({
+        'args' : [
+          '--no-sandbox',
+          '--disable-setuid-sandbox'
+        ]
+      });
       const page = await browser.newPage();
-      await page.goto("http://localhost:3000/secondPage/" + toEmail + '/' + url, {
+      await page.goto("https://seoaccess-server.herokuapp.com/secondPage/" + toEmail + '/' + url, {
         waitUntil: "networkidle2"
       });
-      console.log("http://localhost:3000/secondPage/" + toEmail + '/' + url);
+      console.log("https://seoaccess-server.herokuapp.com/secondPage/" + toEmail + '/' + url);
       await page.setViewport({ width: 1680, height: 1050 });
       await page.emulateMedia('screen');
       await page.pdf({
-        path: "./../backend/services/report.pdf",
+        path: "./report.pdf",
         displayHeaderFooter: true,
         printBackground: true,
         format: "A4"
