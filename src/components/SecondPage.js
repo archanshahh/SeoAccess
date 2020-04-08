@@ -33,8 +33,9 @@ class SecondPage extends React.Component {
   componentDidMount() {
 
 
-    var urlfetch = this.props.match.params.id + '//' + this.props.match.params.url + '/';
-    console.log(urlfetch);
+    var urlfetch = this.props.location.state.url;
+    // console.log('hi'+this.props.location);
+    console.log("url from secondpage    "+urlfetch);
     const loc = {
       location: urlfetch
     }
@@ -100,27 +101,13 @@ class SecondPage extends React.Component {
         alert('Error in generating report!\nPlease try again later or Get in touch with us!')
         window.location = '/';
       })
-    // axios.post('http://localhost:5000/email/sendEmail/', email).then((res) => {
-    //   //break
-    //   console.log(res.data + "response from mail");
-    // });
-
-    // if (this.state.flag == 0) {
-    //   console.log("inside component did mount calling email function");
-    //   this.email();
-    // }
-
-
-
-
-
-
+    
   }
   onSubmit = async (e) => {
     e.preventDefault();
-    var urlfetch = this.props.match.params.id + '//' + this.props.match.params.url + '/';
+    var urlfetch = this.props.location.state.url
     const email = {
-      email: this.props.match.params.email,
+      email: this.props.location.state.email,
       location: urlfetch
     }
 

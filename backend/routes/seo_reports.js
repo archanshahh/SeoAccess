@@ -30,7 +30,6 @@ router.post('/getByUrl', async (req, res) => {
         });
         console.log('hi'+req.body.location+"hi");
         if (!data) {
-
             return res.status(404).send('SEO url  not found');
         }
         // console.log(data+"from seo backend ")
