@@ -1,10 +1,6 @@
 import React from 'react';
-import { Button } from 'react-bootstrap';
-import { useHistory } from "react-router-dom";
-import SecondPage from './SecondPage';
 import axios from 'axios';
 import ProgressBar from 'react-bootstrap/ProgressBar';
-import UrlContext from '../context/urlContext';
 // import {alert} from 'node-popup';
 import history from './history';
 
@@ -61,57 +57,12 @@ class FirstPage extends React.Component {
                 // axios.post('http://localhost:5000/email/sendEmail', email)
                 //window.location = '/secondPage/' + this.state.email + '/' + this.state.url;
                 this.state.history.push({
-                    pathname : '/secondPage',
-                    state : {url: this.state.url, email : this.state.email}
+                    pathname: '/secondPage',
+                    state: { url: this.state.url, email: this.state.email }
                 })
             }
 
         }, 2000)
-
-
-
-        //         let res1=await axios.post('http://localhost:5000/seo_reports/url',url)
-        //           if(res1)
-        //           {
-        //               console.log("get report seo")
-        //             await axios.post('http://localhost:5000/seo_reports/add').then(
-        //                 res=>console.log(res.data)
-        //             )
-        //           }
-        //          else{
-        //    console.log("not added seo")
-        //          }
-        //          let res2=await axios.post('http://localhost:5000/tally_reports/url',url)
-        //          if(res2)
-        //          {
-        //             console.log("get report tally")
-        //             await axios.post('http://localhost:5000/tally_reports/add').then
-        //             (
-        //                 res=>console.log(res.data)
-        //             )
-
-        //          }
-
-
-
-
-
-
-
-        //    let res2= await axios.post('http://localhost:5000/tally_reports/url',url)
-        //     .then(res=>console.log(res.data)).
-        //     then(
-
-
-        //         axios.post('http://localhost:5000/tally_reports/add')
-        //         .then(res=>console.log(res.data))
-
-        //     );
-        // window.location("/secondPage");
-
-
-
-
     }
 
     render() {
@@ -167,30 +118,17 @@ class FirstPage extends React.Component {
                             ></input>
                         </div>
                         <div className="form-check">
-                            <input type="checkbox" className="form-check-input" id="privacy" required/>
+                            <input type="checkbox" className="form-check-input" id="privacy" required />
                             <label className="form-check-label textcolor" htmlFor="privacy">I accept privacy policy</label>
                         </div>
-                       
+
                         <div className="form-group">
                             <button type="submit" className="btn btn-primary d-block mt-4 mx-auto">See report</button>
-                            {/* <input className="btn btn-primary d-block mt-4 mx-auto"  type="submit" value="See Report" className="btn btn-primary" /> */}
                         </div>
-                        {/* <Button variant="btn btn-success" >See Report</Button> */}
-                        {/* onClick={() => history.push('/secondPage')} */}
-
-                        {/* <button type="submit" className="btn btn-primary d-block mt-4 mx-auto" onClick={history.push('/secondPage')}>See report</button> */}
-
                     </form>
                     <label id="loading" hidden>Loading ...</label>
-                    {/* <div className="progress center-block w-25 mt-4 mx-auto" style={{"textAlign" : "center"}}>
                     
-                    <div className="progress-bar d-block bg-success" role="progressbar" aria-valuenow={count} aria-valuemin="0" aria-valuemax="10" style={{"width":   {count} , "textAlign":"center"}}>
-                    {count+"%"}  
-                    </div>
-             
-                </div> */}
-                    {/* <ProgressBar  animated now={count}  label={`${count}%`} /> */}
-                    <br/><br/><br/>
+                    <br /><br /><br />
                     <div>
                         <ProgressBar animated striped variant="success" now={this.state.count} label={`${this.state.count}%`} key={1} />
                     </div>

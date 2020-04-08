@@ -1,7 +1,7 @@
 import React from 'react';
 import DD from '../image/DD.jpg';
 // import  './App.css';
-import{BrowserRouter,Router,Link, Route,Switch} from 'react-router-dom';
+import{Link} from 'react-router-dom';
 
 const Header = (props) => {
     return (
@@ -9,13 +9,13 @@ const Header = (props) => {
         
         <nav className="navbar sticky-top navbar-expand-sm navbar-dark  justify-content-between navbar-custom">
             
-        <a className="navbar-brand flex-row" href="#"> <img src={DD} alt="DD" className="navbar-brand" width="90" height="120" /></a> 
+        <a className="navbar-brand flex-row" href="/Home"> <img src={DD} alt="DD" className="navbar-brand" width="90" height="120" /></a> 
 
-            <div class="flex-column">
+            <div className="flex-column">
             
                 <ul className="navbar-nav mb-2 ">
                     <li className="nav-item active flex-row">
-                        <a className="nav-link py-1 pr-3 h1" href="#">SeoAccess</a>
+                        <a className="nav-link py-1 pr-3 h1" href="/Home">SeoAccess</a>
                     </li>
                     <div className="border border-dark border-3 h-50 textcolor active">
                         <li className="nav-item nav-link">
@@ -37,7 +37,7 @@ const Header = (props) => {
             <div className="collapse navbar-collapse flex-grow-0 float-right" id="navbarSupportedContent">
                 <ul className="navbar-nav mb-2  inside">
                     <li className="nav-item active lis">
-                        <Link className="nav-link l float-right" to="/">Home</Link>
+                        <Link className="nav-link l float-right" to="/Home">Home</Link>
                     </li>
                     <li className="nav-item active">
                         <Link className="nav-link float-right" to="/about">About us</Link>

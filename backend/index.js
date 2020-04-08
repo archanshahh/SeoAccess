@@ -18,7 +18,7 @@ app.use(express.json());
 //pass url
 app.use('/tally_reports', tally_reportsRouter);
 app.use('/seo_reports', seo_reportsRouter);
-app.use('/email', email);
+// app.use('/email', email);
 
 try {
     //get results

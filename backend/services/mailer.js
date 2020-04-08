@@ -24,7 +24,7 @@ module.exports = {
       await page.setViewport({ width: 1680, height: 1050 });
       await page.emulateMedia('screen');
       await page.pdf({
-        path: "./report.pdf",
+        path: "report.pdf",
         displayHeaderFooter: true,
         printBackground: true,
         format: "A4"
