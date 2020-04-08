@@ -1,5 +1,5 @@
 import React from 'react';
-import DD from './DD.jpg';
+import DD from '../image/DD.jpg';
 // import  './App.css';
 import{BrowserRouter,Router,Link, Route,Switch} from 'react-router-dom';
 
