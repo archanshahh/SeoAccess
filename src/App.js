@@ -8,7 +8,7 @@ import ContactUs from './components/contact';
 import SecondPage from './components/SecondPage';
 import { Router, Route, Link,Switch } from "react-router-dom";
 import history from './components/history';
-import New from './components/new'
+
 class App extends React.Component{
   render() {
     return (
@@ -22,8 +22,6 @@ class App extends React.Component{
       <br></br>
         <Footer />
         </Router>
-         
-      
     );
   }
 }
