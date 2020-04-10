@@ -62,7 +62,7 @@ class FirstPage extends React.Component {
                 })
             }
 
-        }, 2000)
+        }, 2500)
     }
 
     render() {
