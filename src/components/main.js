@@ -1,7 +1,6 @@
 import React from 'react';
 import axios from 'axios';
 import ProgressBar from 'react-bootstrap/ProgressBar';
-// import {alert} from 'node-popup';
 import history from './history';
 
 class FirstPage extends React.Component {
@@ -25,7 +24,7 @@ class FirstPage extends React.Component {
             name: e.target.value
         })
     }
-    onChangeEmail(e) {
+    async onChangeEmail(e) {
         this.setState({
             email: e.target.value
         })
@@ -53,24 +52,17 @@ class FirstPage extends React.Component {
             }))
             if (this.state.count === 100) {
                 console.log("inside if" + this.state.count)
-
-                // axios.post('http://localhost:5000/email/sendEmail', email)
-                //window.location = '/secondPage/' + this.state.email + '/' + this.state.url;
                 this.state.history.push({
                     pathname: '/secondPage',
                     state: { url: this.state.url, email: this.state.email }
                 })
             }
-
         }, 2500)
     }
 
     render() {
-        // const {count}=this.state
-
         return (
             <div>
-
                 <div className="container-fluid w-70 mt-2 mx-auto">
                     <div className="d-flex flex-column align-items-center text-center">
                         {/* <div className="border border-dark w-100 align-items-center text-center"> */}

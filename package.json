@@ -11,6 +11,7 @@
     "axios": "^0.19.2",
     "bootstrap": "^4.4.1",
     "chart.js": "^2.9.3",
+    "check-email-exists": "^0.1.2",
     "config": "^3.3.0",
     "google-maps-react": "^2.0.2",
     "jquery": "^3.4.1",

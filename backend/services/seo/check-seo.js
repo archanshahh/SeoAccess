@@ -4,15 +4,21 @@ const checker = require('seo-checker-js');
 const notifier = require('node-notifier');
 
 let rule_custom1 = new checker.Rule('html').included('h1');
-
+let rule_custom2 = new checker.Rule('html').included('meta', 'name', 'description');
+let rule_custom3 = new checker.Rule('html').included('meta', 'name', 'keywords');
+let rule_custom4 = new checker.Rule('html').included('title');
+// let rule_custom2 = new checker.Rule('html').included('');
 // merge all default rules
 var default_rules = checker.mergeRules(
-    checker.rule_h1_gt_1,
+    // checker.rule_h1_gt_1,
     checker.rule_img_without_alt,
     checker.rule_a_without_rel,
-    checker.rule_head_has_title_and_meta,
+    // checker.rule_head_has_title_and_meta,
     checker.rule_strong_gt_15,
-    rule_custom1
+    rule_custom1,
+    rule_custom2,
+    rule_custom3,
+    rule_custom4
 );
 module.exports = {
     checkSEO(url) {
@@ -32,14 +38,3 @@ module.exports = {
 
     }
 }
-
-
-
-
-// read from file
-// fs.readFile('result.txt','utf8', (err,data) => {
-//   if(err){
-//     console.log(err)
-//   }
-//   console.log(data);
-// })
