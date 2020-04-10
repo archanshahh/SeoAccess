@@ -21,7 +21,7 @@ export class Contact extends Component {
                     </h6>
                   <p>&nbsp;</p>
                   <h4 className="mx-auto text-lg-left d-inline-block">
-                    Email: <a href="mailto:hello@dndstrategy.com">hello@dndstrategy.com</a>
+                    Email: <a rel="author" href="mailto:hello@dndstrategy.com">hello@dndstrategy.com</a>
                   </h4>
                   <h4 className="mx-auto text-lg-left d-inline-block">
                     <p>Phone: 416.919.6817</p>
@@ -29,9 +29,9 @@ export class Contact extends Component {
                   <p>&nbsp;</p>
                   <h4 className="mx-auto text-lg-left text-info d-inline-block">
                     Follow us on: <br></br>
-                    <a href="https://www.instagram.com/dndstrategy/" className="text-success">Instagram @dndstrategy</a> <br></br>
-                    <a href="https://www.facebook.com/dndstrategy/" className="text-success">Facebook @dndstrategy</a> <br></br>
-                    <a href="https://www.linkedin.com/company/d&amp;d-strategy/" className="text-success">LinkedIn Dare &amp; Defy</a> <br></br>
+                    <a rel="author" href="https://www.instagram.com/dndstrategy/" className="text-success">Instagram @dndstrategy</a> <br></br>
+                    <a href="https://www.facebook.com/dndstrategy/" className="text-success" rel="author">Facebook @dndstrategy</a> <br></br>
+                    <a href="https://www.linkedin.com/company/d&amp;d-strategy/" className="text-success" rel="author">LinkedIn Dare &amp; Defy</a> <br></br>
                   </h4>
                 </div>
               </div>

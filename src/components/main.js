@@ -74,23 +74,32 @@ class FirstPage extends React.Component {
                 <div className="container-fluid w-70 mt-2 mx-auto">
                     <div className="d-flex flex-column align-items-center text-center">
                         {/* <div className="border border-dark w-100 align-items-center text-center"> */}
-                        <h2 style={{ color: "white" }}>
-                            SeoAccess
-                    </h2>
-
+                        <h1 style={{ color: "white" }}>
+                            Why SeoAccess?
+                        </h1>
+                        <p>How fast and accessible is your website?</p>
                         <div className="border border-dark border-3 w-50 textcolor mt-2">
-                            <a href="#" >
-                                <div className="col-12 text-center h6 mx-auto">
-                                    AODA Details
+                            <div className="container-fluid space">
+                                <div className="row">
+                                    <div className="col-md-6 col-sm-6 col-xs-12 vr jus">
+                                        <p>SEO results in increased traffic and conversions.
+                                                SEO allows companies to get traffic that can drive conversions and revenue. Rather than
+                                                spending money on social media ads and other marketing tactics, we suggest building out SEO.
+                                            <strong> SeoAccess</strong> will help you identify where you lack the SEO standards.
+                                    </p>
+                                    </div>
+
+                                    <div className="col-md-6 col-sm-6 col-xs-12 jus">
+                                        <p>
+                                            It is important that the Web is open to all so that people with different abilities have fair access and equal opportunities.
+                                            An accessible web can help people with different abilities to participate more actively in society.
+                                        <strong> SeoAccess</strong> will inform you where there is a lack of web accessibility compliance.
+                                    </p>
+                                    </div>
+                                </div>
                             </div>
-                            </a>
+
                         </div>
-                        <div className=" border border-dark border-3 w-50 textcolor mt-2">
-                            <div className="col-12 text-center h6 mx-auto">
-                                <a href="#" >SEO Details</a>
-                            </div>
-                        </div>
-                        {/* </div> */}
                     </div>
 
                     <form className="centre-block mt-4 mx-auto w-50" onSubmit={this.onSubmit}>
@@ -127,7 +136,7 @@ class FirstPage extends React.Component {
                         </div>
                     </form>
                     <label id="loading" hidden>Loading ...</label>
-                    
+
                     <br /><br /><br />
                     <div>
                         <ProgressBar animated striped variant="success" now={this.state.count} label={`${this.state.count}%`} key={1} />

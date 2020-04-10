@@ -85,3 +85,9 @@ span#et-info-phone:before {
 .right{
   float: right;
 }
+.vr{
+  border-right: 1px solid #fff;
+}
+.jus{
+  text-align: justify;
+}
