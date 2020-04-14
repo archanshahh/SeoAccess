@@ -31,7 +31,7 @@ class SecondPage extends React.Component {
   }
 
   async componentDidMount() {
-    if(!this.props.location.state.url){
+    if(!this.props.location.state){
       alert('Error in generating report!\nPlease try again later or Get in touch with us!');
       window.location= '/';
     }
