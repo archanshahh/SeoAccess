@@ -6,18 +6,24 @@
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.4.0",
     "@testing-library/user-event": "^7.2.1",
+    "alert-node": "^3.0.10",
     "async": "^3.2.0",
     "axios": "^0.19.2",
     "bootstrap": "^4.4.1",
     "chart.js": "^2.9.3",
+    "check-email-exists": "^0.1.2",
     "config": "^3.3.0",
+    "google-maps-react": "^2.0.2",
     "jquery": "^3.4.1",
+    "js-cookie": "^2.2.1",
     "mongoose": "^5.9.3",
+    "node-popup": "^0.1.14",
     "react": "^16.12.0",
     "react-bootstrap": "^1.0.0-beta.16",
     "react-browser-router": "^2.1.2",
     "react-chartjs-2": "^2.9.0",
     "react-circular-progressbar": "^2.0.3",
+    "react-cookie": "^4.0.3",
     "react-dom": "^16.12.0",
     "react-donut-chart": "^1.1.8",
     "react-gauge-chart": "^0.2.5",
@@ -25,11 +31,11 @@
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.4.0",
     "spin.js": "^4.1.0",
-    "sweetalert": "^2.1.2"
+    "sweetalert": "^2.1.2",
+    "ws": "^7.2.3"
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
@@ -52,5 +58,8 @@
   "main": "index.js",
   "devDependencies": {},
   "author": "Nirmit",
-  "license": "ISC"
+  "license": "ISC",
+  "engines": {
+    "node": "12.x"
+  }
 }

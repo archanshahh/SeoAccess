@@ -30,28 +30,39 @@ async function callAcc(url) {
             warnings: tally_report.summary.warnings,
             total_tags: tally_report.summary.total_tags
         };
-        // eslint-disable-next-line no-array-constructor
-        var arr = Array();
+        // // eslint-disable-next-line no-array-constructor
+        // var serious_arr,critical_arr,moderate_arr,minor_arr,others_arr = Array();
 
+        // serious_arr = tally_report.serious_impact_result;
         //arr.push()
-        for (var i = 0; i < tally_report.results.length; i++) {
-            // eslint-disable-next-line no-new-object
-            const result = new Object({
-                type: tally_report.results[i].type,
-                impact: tally_report.results[i].impact,
-                description: tally_report.results[i].description,
-                helpURL: tally_report.results[i].helpURL
-            })
-            arr.push(result);
-        }
-        const results = arr;
+        // for (var i = 0; i < tally_report.serious_impact_result; i++) {
+        //     // eslint-disable-next-line no-new-object
+        //     const result = new Object({
+        //         type: tally_report.results[i].type,
+        //         impact: tally_report.results[i].impact,
+        //         description: tally_report.results[i].description,
+        //         helpURL: tally_report.results[i].helpURL
+        //     })
+        //     arr.push(result);
+        // }
+        // const results = arr;
+
+        const serious_impact_result=tally_report.serious_impact_result;
+        const moderate_impact_result=tally_report.moderate_impact_result;
+        const critical_impact_result=tally_report.critical_impact_result;
+        const minor_impact_result=tally_report.minor_impact_result;
+        const others_impact_result=tally_report.others_impact_result;
 
         const score = tally_report.score;
 
         const nTally = new Tally_report({
             url,
             summary,
-            results,
+            serious_impact_result,
+            moderate_impact_result,
+            critical_impact_result,
+            minor_impact_result,
+            others_impact_result,
             score
         });
 
@@ -62,7 +73,7 @@ async function callAcc(url) {
         // .catch((err) => console.log(err));
         // });
     }).catch((e) => {
-        console.error("Error: "+e);
+        console.error("Error in routes/tally_reports: "+e);
     });
     //return tally_report;
 }

@@ -17,9 +17,12 @@ const TallySchema = new Schema({
         warnings: {type: String},
         total_tags: {type: String}
     },
-    results: [
-        sub
-    ],
+    serious_impact_result: [sub],
+    moderate_impact_result: [sub],
+    critical_impact_result: [sub],
+    minor_impact_result: [sub],
+    others_impact_result: [sub],
+    
     score: {type: Number, required: true}
 },
 {

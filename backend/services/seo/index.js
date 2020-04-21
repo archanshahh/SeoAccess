@@ -4,24 +4,24 @@ const fs = require('fs');
 const split = require('string-split-by');
 let seo_report;
 var arrOfSEOResult, perf_result;
-
+const notifier = require('node-notifier');
 
 //checking performance
-function checkPerformance(url){
+function checkPerformance(url) {
     return new Promise((resolve, reject) => {
         console.log("Starting Performance");
         check_performance.checkPerformance(url).then((result) => {
             perf_result = result
             //console.log(perf_result)
-            if(perf_result){
+            if (perf_result) {
                 resolve(perf_result)
             }
-            else{
+            else {
                 reject("Error in checking performance");
             }
         });
     });
-} 
+}
 
 //Checking seo compliance
 function checkSEOCompliance(url) {
@@ -35,7 +35,7 @@ function checkSEOCompliance(url) {
             reject(response);
         }
     });
-} 
+}
 
 
 
@@ -51,55 +51,59 @@ function createReportObject(url) {
         },
         seo_results: arrOfSEOResult,
         performance_results: perf_result,
-        score: Math.round(100-((arrOfSEOResult.length*100)/6))
+        score: Math.round(100 - ((arrOfSEOResult.length * 100) / 6))
     }
+    // console.log('Array of SEO Result: '+arrOfSEOResult);
     return seo_report;
 }
 
 module.exports = {
-    async doAudit(url){
-    let seo_result = await checkSEOCompliance(url);
-    let perf_result = await checkPerformance(url);
-    console.log('Writing finished!');
+    async doAudit(url) {
+        try {
+            let seo_result = await checkSEOCompliance(url);
+            let perf_result = await checkPerformance(url);
+            console.log('Writing finished!');
 
 
-    if (seo_result) {
-        console.log(seo_result);
-        let readSEO = new Promise((resolve, reject) => {
-            console.log("reading started");
-            fs.readFile('./seo-results.txt', (err, data) => {
-                if (err) {
-                    console.log(err);
-                };
-                arrOfSEOResult = split(String(data), '\n');
-                arrOfSEOResult.splice(-1, 1);
-                removeFile();
-                console.log(arrOfSEOResult);
-                if (arrOfSEOResult != null) {
-                    resolve(true);
-                } else {
-                    reject(false);
+            if (seo_result) {
+                console.log(seo_result);
+                let readSEO = new Promise((resolve, reject) => {
+                    console.log("reading started");
+                    fs.readFile('./seo-results.txt', (err, data) => {
+                        if (err) {
+                            console.log(err);
+                        };
+                        arrOfSEOResult = split(String(data), '\n');
+                        arrOfSEOResult.splice(-1, 1);
+                        removeFile();
+                        console.log(arrOfSEOResult);
+                        if (arrOfSEOResult != null) {
+                            resolve(true);
+                        } else {
+                            reject(false);
+                        }
+                    })
+                });
+
+
+                let a3 = await readSEO;
+                if (perf_result && a3) {
+                    //console.log(perf_result);
+                    seo_report = createReportObject(url);
+                    //console.log(seo_report);
+                    return seo_report;
+                    
                 }
-            })
-        });
-
-         
-        let a3 = await readSEO;
-        if (perf_result && a3) {
-            //console.log(perf_result);
-            seo_report = createReportObject(url);
-            //console.log(seo_report);
-            return seo_report;
-            // if(seo_report){
-            //     resolve(seo_report)
-            // }
-            // else{
-            //     reject("Error in seo report")
-            // }
-            // return true;
+                else{
+                    notifier.notify('Error in generating SEO report!\nPlease try again later or Get in touch with us!');
+                }
+            }
+        } catch (error) {
+            notifier.notify('Error in generating SEO report!\nPlease try again later or Get in touch with us!');
+            console.log('Error in seo/index.js: '+error);
         }
+
     }
-}
 }
 
 

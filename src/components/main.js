@@ -1,12 +1,7 @@
 import React from 'react';
-import { Button } from 'react-bootstrap';
-import { BrowserRouter, Route, Link } from "react-router-dom";
-import SecondPage from './SecondPage';
-import history from './history';
 import axios from 'axios';
 import ProgressBar from 'react-bootstrap/ProgressBar';
-import UrlContext from '../context/urlContext';
-
+import history from './history';
 
 class FirstPage extends React.Component {
     constructor(props) {
@@ -19,7 +14,8 @@ class FirstPage extends React.Component {
             name: "",
             email: "",
             url: "",
-            count: 0
+            count: 0,
+            history
         }
     }
 
@@ -28,7 +24,7 @@ class FirstPage extends React.Component {
             name: e.target.value
         })
     }
-    onChangeEmail(e) {
+    async onChangeEmail(e) {
         this.setState({
             email: e.target.value
         })
@@ -45,155 +41,97 @@ class FirstPage extends React.Component {
 
         }
 
-        const email = {
-            email: this.state.email
-        }
-
-
         console.log(this.state.url)
         console.log(this.state.email)
 
-        await axios.post('http://localhost:5000/seo_reports/url/', url);
-        await axios.post('http://localhost:5000/tally_reports/url/', url);
+        await axios.post('https://seoaccess-server.herokuapp.com/seo_reports/url/', url);
+        await axios.post('https://seoaccess-server.herokuapp.com/tally_reports/url/', url);
         this.myInterval = setInterval(() => {
             this.setState(prevState => ({
                 count: this.state.count + 10
             }))
             if (this.state.count === 100) {
                 console.log("inside if" + this.state.count)
-
-                // axios.post('http://localhost:5000/email/sendEmail', email)
-                window.location = '/secondPage/' + this.state.email + '/' + this.state.url;
-
+                this.state.history.push({
+                    pathname: '/secondPage',
+                    state: { url: this.state.url, email: this.state.email }
+                })
             }
-
-        }, 2000)
-
-
-
-        //         let res1=await axios.post('http://localhost:5000/seo_reports/url',url)
-        //           if(res1)
-        //           {
-        //               console.log("get report seo")
-        //             await axios.post('http://localhost:5000/seo_reports/add').then(
-        //                 res=>console.log(res.data)
-        //             )
-        //           }
-        //          else{
-        //    console.log("not added seo")
-        //          }
-        //          let res2=await axios.post('http://localhost:5000/tally_reports/url',url)
-        //          if(res2)
-        //          {
-        //             console.log("get report tally")
-        //             await axios.post('http://localhost:5000/tally_reports/add').then
-        //             (
-        //                 res=>console.log(res.data)
-        //             )
-
-        //          }
-
-
-
-
-
-
-
-        //    let res2= await axios.post('http://localhost:5000/tally_reports/url',url)
-        //     .then(res=>console.log(res.data)).
-        //     then(
-
-
-        //         axios.post('http://localhost:5000/tally_reports/add')
-        //         .then(res=>console.log(res.data))
-
-        //     );
-        // window.location("/secondPage");
-
-
-
-
+        }, 2500)
     }
 
     render() {
-        // const {count}=this.state
-
         return (
             <div>
-
                 <div className="container-fluid w-70 mt-2 mx-auto">
                     <div className="d-flex flex-column align-items-center text-center">
                         {/* <div className="border border-dark w-100 align-items-center text-center"> */}
-                        <h2 style={{ color: "white" }}>
-                            Title
-                    </h2>
-
+                        <h1 style={{ color: "white" }}>
+                            Why SeoAccess?
+                        </h1>
+                        <p>We provide modern SEO & Web accessibility checks for your webpage!</p>
                         <div className="border border-dark border-3 w-50 textcolor mt-2">
-                            <a href="#" >
-                                <div className="col-12 text-center h6 mx-auto">
-                                    AODA Details
+                            <div className="container-fluid space">
+                                <div className="row">
+                                    <div className="col-md-6 col-sm-6 col-xs-12 vr jus">
+                                        <h3>SEO</h3>
+                                        <p>SEO results in increased traffic and conversions.
+                                                SEO allows companies to get traffic that can drive conversions and revenue. Rather than
+                                                spending money on social media ads and other marketing tactics, we suggest building out SEO.
+                                            <strong> SeoAccess</strong> will help you identify where you lack the SEO standards.
+                                    </p>
+                                    </div>
+
+                                    <div className="col-md-6 col-sm-6 col-xs-12 jus">
+                                        <h3>Web Accessibility</h3>
+                                        <p>
+                                            It is important that the Web is open to all so that people with different abilities have fair access and equal opportunities.
+                                            An accessible web can help people with different abilities to participate more actively in society.
+                                        <strong> SeoAccess</strong> will inform you where there is a lack of web accessibility compliance.
+                                    </p>
+                                    </div>
+                                </div>
                             </div>
-                            </a>
+
                         </div>
-                        <div className=" border border-dark border-3 w-50 textcolor mt-2">
-                            <div className="col-12 text-center h6 mx-auto">
-                                <a href="#" >SEO Details</a>
-                            </div>
-                        </div>
-                        {/* </div> */}
                     </div>
 
                     <form className="centre-block mt-4 mx-auto w-50" onSubmit={this.onSubmit}>
                         <div className="form-group">
-                            <input type="text"
+                            <label for="name" hidden>Name : </label>
+                            <input type="text" required
                                 className="form-control box"
                                 id="name"
                                 placeholder="Enter your name"
                                 value={this.state.name}
                                 onChange={this.onChangeName}
-                            ></input>
+                            />
                         </div>
-                        <div className="form-group">
-                            <input type="email" className="form-control box" id="email" placeholder="name@example.com "
+                        <div className="form-group"><label for="email" hidden>Email : </label>
+                            <input type="email" required className="form-control box" id="email" placeholder="name@example.com "
                                 value={this.state.email}
                                 onChange={this.onChangeEmail}
-                            >
+                            />
 
-                            </input>
                         </div>
-                        <div className="form-group">
-                            <input type="url" className="form-control box" id="url" placeholder="www.url.com" value={this.state.url}
+                        <div className="form-group"><label for="url" hidden>URL : </label>
+                            <input type="url" required className="form-control box" id="url" placeholder="www.url.com" value={this.state.url}
                                 onChange={this.onChangeUrl}
 
-                            ></input>
+                            />
                         </div>
-                        <div className="form-check">
-                            <input type="checkbox" className="form-check-input" id="privacy" />
+                        <div className="form-check"><label for="privacy" hidden></label>
+                            <input type="checkbox" className="form-check-input" id="privacy" required />
                             <label className="form-check-label textcolor" htmlFor="privacy">I accept privacy policy</label>
                         </div>
-                        <div className="form-check">
-                            <input type="checkbox" className="form-check-input" id="SendEmail" />
-                            <label className="form-check-label textcolor" htmlFor="SendEmail">I want report to be emailed</label>
-                        </div>
-                        <div className="form-group">
-                            <button type="submit" className="btn btn-primary d-block mt-4 mx-auto">See report</button>
-                            {/* <input className="btn btn-primary d-block mt-4 mx-auto"  type="submit" value="See Report" className="btn btn-primary" /> */}
-                        </div>
-                        {/* <Button variant="btn btn-success" >See Report</Button> */}
-                        {/* onClick={() => history.push('/secondPage')} */}
 
-                        {/* <button type="submit" className="btn btn-primary d-block mt-4 mx-auto" onClick={history.push('/secondPage')}>See report</button> */}
-
+                        <div className="form-group"><label for="sub" hidden></label>
+                            <button type="submit" id="sub" className="btn btn-primary d-block mt-4 mx-auto">See report</button>
+                        </div>
                     </form>
                     <label id="loading" hidden>Loading ...</label>
-                    {/* <div className="progress center-block w-25 mt-4 mx-auto" style={{"textAlign" : "center"}}>
-                    
-                    <div className="progress-bar d-block bg-success" role="progressbar" aria-valuenow={count} aria-valuemin="0" aria-valuemax="10" style={{"width":   {count} , "textAlign":"center"}}>
-                    {count+"%"}  
-                    </div>
-             
-                </div> */}
-                    {/* <ProgressBar  animated now={count}  label={`${count}%`} /> */}
+
+                    <br /><br /><br />
                     <div>
                         <ProgressBar animated striped variant="success" now={this.state.count} label={`${this.state.count}%`} key={1} />
                     </div>
