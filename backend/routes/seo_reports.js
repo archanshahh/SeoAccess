@@ -1,11 +1,8 @@
 const express = require('express');
 const router = express.Router();
 const checkSEO = require('./../services/seo/index');
-
 let Seo_report = require('../models/seo_report.model');
-let seo_report;
-
-const queryString = require('query-string');
+// let seo_report;
 
 router.route('/url').post((req, res) => {
     try {
@@ -26,13 +23,16 @@ router.route('/url').post((req, res) => {
 // }
 router.post('/getByUrl', async (req, res) => {
     try {
-        console.log("inside")
+        // console.log("inside")
+        // console.log(req.body.location);
         const data = await Seo_report.find({
-            url: req.body.url
+            url: req.body.location
         });
+        console.log('hi'+req.body.location+"hi");
         if (!data) {
             return res.status(404).send('SEO url  not found');
         }
+        // console.log(data+"from seo backend ")
         res.send(data);
     } catch (err) {
         res.status(500).send('Server error');
@@ -40,15 +40,13 @@ router.post('/getByUrl', async (req, res) => {
 });
 router.route('/').get((req, res) => {
     Seo_report.find({})
-        .then(seo_reports => res.json(seo_reports),
-
-        )
+        .then(seo_reports => res.json(seo_reports))
         .catch(err => res.status(400).json('Error: ' + err))
 });
 async function callSEO(url) {
     await checkSEO.doAudit(url).then((seo_report) => {
         // router.route('/add').post((req,res)=>{
-        console.log(seo_report);
+       // console.log(seo_report);
         const url = seo_report.url;
 
 
@@ -56,6 +54,7 @@ async function callSEO(url) {
             errors: seo_report.summary.errors,
             total_rules: seo_report.summary.total_rules
         };
+        // eslint-disable-next-line no-array-constructor
         var arr = Array();
         for (var i = 0; i < seo_report.seo_results.length; i++) {
             arr.push(seo_report.seo_results[i]);
@@ -85,6 +84,9 @@ async function callSEO(url) {
         // .then(()=> res.json('Seo report added'))
         // .catch((err)=> res.status(400).json('Error: '+err));
         // });
+    })
+    .catch((err)=>{
+        console.log("Error "+err);
     });
 
 }
