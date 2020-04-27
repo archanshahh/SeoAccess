@@ -1,6 +1,7 @@
 SeoAccess
 ==========
 > Modern Seo & Web Accessibilty audits :muscle:
+> Responsive web app built with Node.js, React, Express and MongoDB
 
 Features
 ===========
