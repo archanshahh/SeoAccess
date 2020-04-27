@@ -32,7 +32,7 @@ class SecondPage extends React.Component {
 
   async componentDidMount() {
     if(!this.props.location.state){
-      alert('Error in generating report!\nPlease try again later or Get in touch with us!');
+      alert('Error in generating report!\nEnter SSL certified websites only!\nIf the error persists, try again later or get in touch with us, Thank you!');
       window.location= '/';
     }
     let urlfetch = this.props.location.state.url;
@@ -65,7 +65,7 @@ class SecondPage extends React.Component {
         })
       })
       .catch((e)=>{
-        alert('Error in generating report!\nPlease try again later or Get in touch with us!')
+        alert('Error in generating report!\nEnter SSL certified websites only!\nIf the error persists, try again later or get in touch with us, Thank you!')
         window.location = '/';
       })
     // console.log("hello"+request);
@@ -97,7 +97,7 @@ class SecondPage extends React.Component {
 
       })
       .catch((e)=>{
-        alert('Error in generating report!\nPlease try again later or Get in touch with us!')
+        alert('Error in generating report!\nEnter SSL certified websites only!\nIf the error persists, try again later or get in touch with us, Thank you!')
         window.location = '/';
       })
       // let emailObj = {
