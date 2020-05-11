@@ -1,6 +1,6 @@
 SeoAccess
 ==========
-Modern Seo & Web Accessibilty auditing tool :muscle:
+Modern SEO & Web Accessibilty auditing tool :muscle:
 <br>
 Responsive web app built with Node.js, React, Express and MongoDB
 <br>
@@ -8,18 +8,21 @@ Responsive web app built with Node.js, React, Express and MongoDB
 
 Features
 ===========
-- **Check Seo standard of your website**
-    - Audit your website against set of rules which will help you get your website higher in SEO rankings
-- **Examine you website performance**
+- **SEO & accessibility friendly**
+    - 100% SEO friendly
+    - \>90% Accessibility compliant
+- **Check SEO standard of your website**
+    - Audit your website against a set of rules which will help you get your website higher in SEO rankings
+- **Examine your website performance**
     - Look at how much time does your website takes to load in real world
 - **Inspect Accessibility compliance of your website**
     - Audit your websites with a range of test suites including WCAG 2.0/2.1 A, AA, AAA, Section 508, HTML validation, as well as our own best practices
 - **Quick Analysis**
     - Get a report in few seconds
 - **User-Interactive Report**
-    - Experience our categorised and dynamic report generating system
+    - Experience our categorized and dynamic report generating system
 - **Modern dynamic websites**
-    - SeoAccess treats all websites as dynamic with full JavaScript support, so you'll test pages as your users actually experience them
+    - SeoAccess treats all websites as dynamic with full JavaScript support, so you'll test webpages as your users experience them in real world
 - **Free to try**
     - Simple to get started for free
 
