@@ -1,8 +1,8 @@
 SeoAccess
 ==========
-> Modern Seo & Web Accessibilty audits :muscle:
-
-> Responsive web app built with Node.js, React, Express and MongoDB
+Modern Seo & Web Accessibilty auditing tool :muscle:
+<br>
+Responsive web app built with Node.js, React, Express and MongoDB
 
 Features
 ===========
@@ -21,7 +21,7 @@ Features
 - **Free to try**
     - Simple to get started for free
 
-Screens
+Screenshots
 ==========
 - **Home page**
 ![Image 1](https://github.com/archanshahh/CapstoneProject/blob/master/screenshots/Homepage.png) 
